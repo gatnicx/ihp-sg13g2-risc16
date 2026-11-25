@@ -1,0 +1,23 @@
+== Verilator lint ==
+- V e r i l a t i o n   R e p o r t: Verilator 5.044 2026-01-01 rev v5.040
+- Verilator: Built from 0.047 MB sources in 2 modules, into 0.032 MB in 3 C++ files needing 0.000 MB
+- Verilator: Walltime 0.007 s (elab=0.001, cvt=0.003, bld=0.000); cpu 0.007 s on 1 threads; alloced 20.305 MB
+
+== Build self-checking simulation ==
+make: Entering directory '/home/adam_benny_hinn/eda/projects/digital/ihp_sg13g2_risc16/build/obj_dir'
+make: Nothing to be done for 'default'.
+make: Leaving directory '/home/adam_benny_hinn/eda/projects/digital/ihp_sg13g2_risc16/build/obj_dir'
+- V e r i l a t i o n   R e p o r t: Verilator 5.044 2026-01-01 rev v5.040
+- Verilator: Built from 0.000 MB sources in 0 modules, into 0.000 MB in 0 C++ files needing 0.000 MB
+- Verilator: Walltime 0.006 s (elab=0.000, cvt=0.000, bld=0.006); cpu 0.001 s on 1 threads; alloced 18.906 MB
+
+== Run simulation ==
+PASS: RISC16 test completed in 43 cycles
+      MEM[0] = 8 (ADD + STORE + LOAD + BEQ)
+      MEM[1] = 7 (JAL target path + ADDI + STORE)
+      MEM[2] = 9 (JAL link register R7)
+      HALTED = 1
+- tb/tb_risc16_core.sv:120: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.044 2026-01-01
+- Verilator: $finish at 460ns; walltime 0.000 s; speed 9.073 ms/s
+- Verilator: cpu 0.000 s on 1 threads; alloced 7 MB

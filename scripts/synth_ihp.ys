@@ -1,0 +1,49 @@
+
+# ==========================================================
+# RISC16 - IHP SG13G2 TECHNOLOGY MAPPING
+# Top module: risc16_core
+# Library: sg13g2_stdcell
+# Corner: TT 1.20V 25C
+# ==========================================================
+
+# Read RTL
+read_verilog src/risc16_core.v
+
+# Check hierarchy
+hierarchy -check -top risc16_core
+
+# Generic synthesis without ABC mapping
+synth -top risc16_core -flatten -noabc
+
+# Load standard-cell blackbox definitions.
+# Needed for correct cell pin-direction recognition.
+read_liberty -lib -ignore_miss_func "/home/adam_benny_hinn/eda/pdk/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib"
+
+# Convert synchronous resets and clock enables
+# into equivalent data-path logic.
+dffunmap
+
+# Map flip-flops
+dfflibmap -liberty "/home/adam_benny_hinn/eda/pdk/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib"
+
+# Map combinational logic
+abc -liberty "/home/adam_benny_hinn/eda/pdk/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib"
+
+# Map constant drivers to IHP tie cells
+hilomap -singleton     -hicell sg13g2_tiehi L_HI     -locell sg13g2_tielo L_LO
+
+# Remove unused cells and wires
+clean
+
+# Structural validation
+check -assert
+
+# Technology-mapped statistics
+stat -liberty "/home/adam_benny_hinn/eda/pdk/ihp-sg13g2/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib"
+
+# Export mapped netlist
+write_verilog -noattr build/yosys/risc16_core_ihp_mapped.v
+
+# Export mapped JSON
+write_json build/yosys/risc16_core_ihp_mapped.json
+

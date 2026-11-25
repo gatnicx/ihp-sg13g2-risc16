@@ -1,0 +1,55 @@
+# LibreLane / OpenROAD generated runs
+/runs/
+
+# Verilator build directory
+/build/
+/obj_dir/
+
+# Generated physical design databases and outputs
+*.odb
+*.spef
+*.sdf
+*.spice
+*.gds
+*.gdsii
+*.lef
+*.def
+*.mag
+*.maglef
+
+# Temporary files
+*.swp
+*~
+.DS_Store
+*.tmp
+
+# Credentials
+.env
+.env.*
+!.env.example
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Temporary and generated schematics
+/risc16_rtl.dot
+/risc16_rtl.svg
+/showcase/schematic/*.dot
+/showcase/schematic/*.new
+
+# Script backups
+/scripts/*.bak
+
+# Local EDA reports not yet curated for publication
+/reports/
+
+# Local generated schematic and simulation duplicates
+/showcase/schematic/
+/showcase/simulation/
+
+# Root-level generated waveforms
+/risc16.vcd
+
+# Windows metadata
+*:Zone.Identifier

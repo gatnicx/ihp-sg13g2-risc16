@@ -1,0 +1,16 @@
+# RISC16 - IHP SG13G2 Physical Design Configuration
+
+DESIGN_NAME: risc16_core
+
+# RTL source
+VERILOG_FILES:
+  - dir::src/risc16_core.v
+
+# Clock configuration
+CLOCK_PORT: clk
+CLOCK_PERIOD: 20.0
+
+# Floorplanning
+FP_SIZING: relative
+FP_CORE_UTIL: 35
+FP_ASPECT_RATIO: 1.0

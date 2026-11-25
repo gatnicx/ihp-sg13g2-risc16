@@ -1,0 +1,26 @@
+
+# ==================================================
+# RISC16 GENERIC SYNTHESIS
+# Top module: risc16_core
+# ==================================================
+
+read_verilog src/risc16_core.v
+
+# Check design hierarchy
+hierarchy -check -top risc16_core
+
+# Generic synthesis
+synth -top risc16_core -flatten
+
+# Check for structural problems
+check -assert
+
+# Print synthesized cell statistics
+stat -top risc16_core
+
+# Export synthesized netlist
+write_verilog -noattr build/yosys/risc16_core_generic.v
+
+# Export synthesized JSON
+write_json build/yosys/risc16_core_generic.json
+
