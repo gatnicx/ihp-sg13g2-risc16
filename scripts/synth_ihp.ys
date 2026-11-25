@@ -46,4 +46,3 @@ write_verilog -noattr build/yosys/risc16_core_ihp_mapped.v
 
 # Export mapped JSON
 write_json build/yosys/risc16_core_ihp_mapped.json
-
